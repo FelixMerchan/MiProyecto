@@ -77,6 +77,8 @@ class RolController extends Controller
     public function edit($id)
     {
         $rol = Rol::find($id);
+        
+        dd($rol);
         return view('administracion.roles.edit',compact('rol'));
     }
 
