@@ -29,7 +29,7 @@ class RolController extends Controller
      */
     public function create()
     {
-        //
+        return view('administracion.roles.create');
     }
 
     /**
