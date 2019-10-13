@@ -104,7 +104,10 @@ class RolController extends Controller
            
         if($rol->save()){
             return Redirect::to('administracion/roles')->with('mensaje-registro', 'Registro Actualizado Correctamente');
+        }else{
+            return Redirect::to('administracion/roles')->with('mensaje-error', 'Ocurrio un error');
         }
+
     }
 
     /**
@@ -113,9 +116,19 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $rol = Rol::find($id);
+        $rol->estado = 0;
+        $rol->save();
+
+        $message = "Eliminado Correctamente";
+        if ($request->ajax()) {
+            return response()->json([
+               
+                'message' => $message
+            ]);
+        }
     }
 
     public function roles_ajax(Request $request)

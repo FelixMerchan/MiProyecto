@@ -38,7 +38,7 @@
                             <div class="col-md-4 col-xs-12">
                                     <div class="form-group">
                                             <label>Descripción (*)</label>
-                                            <textarea class="form-control" rows="5" id="descripcion" name="descripcion" required=""> {{$rol->descripcion}}</textarea>
+                                            <textarea class="form-control" maxlength="255" rows="5" id="descripcion" name="descripcion" required=""> {{$rol->descripcion}}</textarea>
                                           
                                         </div>
                             </div>
