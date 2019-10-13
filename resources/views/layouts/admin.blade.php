@@ -160,7 +160,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{ route('roles.index') }}"><i class="fa fa-circle-o"></i> Listado</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Agregar</a></li>
+                        <li><a href="{{ route('roles.create') }}"><i class="fa fa-circle-o"></i> Agregar</a></li>
                     </ul>
                   </li>
 
