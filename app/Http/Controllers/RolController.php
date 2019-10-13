@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 
+use App\Rol;
+
 class RolController extends Controller
 {
     /**
