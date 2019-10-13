@@ -43,13 +43,13 @@
 
      
             @else
-            <div class="col-md-12 col-lg-12">
+                <div class="col-md-12 col-lg-12">
                     <div style="text-align: center;">
                         <img style="width: 150px" src="{{url('imagenes/caution.png')}}"  alt="No se encontraron registros"/>
                         <h2 class="number">Oh no!</h2>
                         <label style='color:#FA206A'>...No se ha encontrado ningún registro...</label>  
                         <br>
-                        <a title="Agregar nuevo usuario" href="#" class="btn btn-primary" style="cursor:pointer; color:white" role="button">Agregar nuevo registro</a>
+                        <a title="Agregar nuevo usuario" href="{{ route('roles.create') }}" class="btn btn-primary" style="cursor:pointer; color:white" role="button">Agregar nuevo registro</a>
 
                     </div>
                    

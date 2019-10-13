@@ -18,7 +18,7 @@ class RolController extends Controller
     {
         $roles = Rol::where('estado',1)->orderBy('id')->get();
  
-       
+  
         return View('administracion.roles.index',compact('roles'));
     }
 
