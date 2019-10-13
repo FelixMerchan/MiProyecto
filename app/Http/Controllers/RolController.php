@@ -91,7 +91,20 @@ class RolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rol = Rol::find($id);
+
+        $rol->fill([
+
+            'rol' =>  $request->rol,
+            'descripcion' => $request->descripcion,
+            'fecha_registro' => $request->fecha_registro,
+
+        ]);
+
+           
+        if($rol->save()){
+            return Redirect::to('administracion/roles')->with('mensaje-registro', 'Registro Actualizado Correctamente');
+        }
     }
 
     /**
