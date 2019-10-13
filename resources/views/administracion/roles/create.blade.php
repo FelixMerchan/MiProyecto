@@ -26,8 +26,8 @@
         <div class="box-body">
 
         <form class="form-horizontal" id="form" method="post" action="{{ route('roles.store') }}"> 
-           
-                @csrf
+                <!-- Proteccion CSRF  -->
+                @csrf 
 
                 <div class="row" ><!--Inicio de row -->
                             <div class="col-md-4 col-xs-12">

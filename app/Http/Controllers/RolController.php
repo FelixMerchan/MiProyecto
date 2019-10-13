@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DataTables;
 
 use App\Rol;
+use Illuminate\Support\Facades\Redirect;
 
 class RolController extends Controller
 {
@@ -40,7 +41,10 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        /*
+        * para revisar los datos de la variable
+        * dd($request);
+        */
 
         Rol::create([
             'rol' =>  $request->rol,
