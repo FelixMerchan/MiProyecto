@@ -40,7 +40,17 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+
+        Rol::create([
+            'rol' =>  $request->rol,
+            'descripcion' =>  $request->descripcion,
+            'fecha_registro' =>  $request->fecha_registro,
+      
+        
+        ]);
+
+        return Redirect::to('administracion/roles')->with('mensaje-registro', 'Registrado Correctamente');
     }
 
     /**

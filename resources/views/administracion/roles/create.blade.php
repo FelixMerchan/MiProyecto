@@ -25,37 +25,38 @@
         </div><!-- /.box-header -->
         <div class="box-body">
 
-        <form class="form-horizontal" id="form" method="post" action="{{ route('roles.store')}}"> 
+        <form class="form-horizontal" id="form" method="post" action="{{ route('roles.store') }}"> 
            
                 @csrf
 
                 <div class="row" ><!--Inicio de row -->
                             <div class="col-md-4 col-xs-12">
-                                    <div class="form-group">
-                                            <label>Rol (*)</label>
-                                            <input class="form-control" type="text" id="rol" name="rol" placeholder="Ingrese el nrol" required="">
-                                           
-                                        </div>
+                                <div class="form-group">
+                                    <label>Rol (*)</label>
+                                    <input class="form-control" type="text" id="rol" name="rol" placeholder="Ingrese el nrol" required="">
+                                    
+                                </div>
                             </div>
                             <div class="col-md-4 col-xs-12">
-                                    <div class="form-group">
-                                            <label>Descripción (*)</label>
-                                            <textarea class="form-control" rows="5" id="descripcion" name="descripcion" required=""></textarea>
-                                          
-                                        </div>
+                                <div class="form-group">
+                                    <label>Descripción (*)</label>
+                                    <textarea class="form-control" rows="5" id="descripcion" name="descripcion" required=""></textarea>
+                                    
+                                </div>
                             </div>
 
                             <div class="col-md-4 col-xs-12">
-                                    <div class="form-group">
-                                            <label>Fecha (*)</label>
-                                            <input class="form-control" type="date" id="fecha_registro" name="fecha_registro" required="">
-                                           
-                                        </div>
+                                <div class="form-group">
+                                    <label>Fecha (*)</label>
+                                    <input class="form-control" type="date" id="fecha_registro" name="fecha_registro" required="">
+                
+                                </div>
                             </div>
 
                             <div class="col-md-12 col-xs-12" align="center">
-                                    <input type="submit" class="btn btn-primary" value="Guardar">
-                                    
+                                
+                                <input type="submit" class="btn btn-primary" value="Guardar">
+                            
                             </div>
                       
             
