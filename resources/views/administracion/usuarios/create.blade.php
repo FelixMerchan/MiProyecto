@@ -31,35 +31,63 @@
 
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
-                    
+                        <div class="form-group">
+                            <label>Nombres (*)</label>
+                            <input class="form-control" type="text" id="name" name="name" placeholder="Ingrese el nombre" required="">
+                        </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
-                    
+                        <div class="form-group">
+                            <label>Apellidos (*)</label>
+                            <input class="form-control" type="text" id="apellidos" name="apellidos" placeholder="Ingrese el apellido" required="">
+                        </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
-                    
+                        <div class="form-group">
+                            <label>Cedula (*)</label>
+                            <input class="form-control" type="text" id="cedula" name="cedula" placeholder="Ingrese la cedula" required="">
+                        </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
-                    
+                        <div class="form-group">
+                            <label>Edad (*)</label>
+                            <input class="form-control" type="number" id="edad" name="edad" placeholder="Ingrese la edad" required="">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            <label>Email (*)</label>
+                            <input class="form-control" type="email" id="email" name="email" placeholder="Ingrese el email" required="">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            <label>Foto (*)</label>
+                            <input class="form-control" type="file" id="path" name="path"  required="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-xs-12">
+                        <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            <label>Contraseña (*)</label>
+                            <input class="form-control" type="password" id="password" name="password" placeholder="Ingrese la contraseña" required="">
+                        </div>
+                    </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
 
                     </div>
-                    <div class="col-md-4 col-xs-12">
-                    
-                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 col-xs-12">
-                    
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                    
-                    </div>
-                </div>
+
+
+
+
+
 
 
 
