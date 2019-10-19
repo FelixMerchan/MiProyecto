@@ -80,51 +80,19 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
-
+                        <div class="form-group">
+                            <label>Roles</label>
+                            <select class="form-control select2" multiple="multiple" data-placeholder="Seleccione los roles" name ="roles[]" style="width: 100%;">
+                                @foreach($roles as $rol)
+                                    <option value="{{$rol->id}}" >  {{ $rol->rol }} </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
+                    <!--align="center"-->
                     <div class="col-md-4 col-xs-12">
-                    
+                        <input type="submit" class="btn btn-primary" value="Guardar">
                     </div>
-                </div>
-
-
-
-
-
-
-
-
-                <div class="row" ><!--Inicio de row -->
-                            <div class="col-md-4 col-xs-12">
-                                <div class="form-group">
-                                    <label>Rol (*)</label>
-                                    <input class="form-control" type="text" id="rol" name="rol" placeholder="Ingrese el nrol" required="">
-                                    
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-xs-12">
-                                <div class="form-group">
-                                    <label>Descripción (*)</label>
-                                    <textarea class="form-control" rows="5" id="descripcion" name="descripcion" required=""></textarea>
-                                    
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-xs-12">
-                                <div class="form-group">
-                                    <label>Fecha (*)</label>
-                                    <input class="form-control" type="date" id="fecha_registro" name="fecha_registro" required="">
-                
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 col-xs-12" align="center">
-                                
-                                <input type="submit" class="btn btn-primary" value="Guardar">
-                            
-                            </div>
-                      
-            
                 </div>
 
 
@@ -134,16 +102,23 @@
 @endsection
 
 @section('script')
+<script>
+    $(function() {
+        $(".select2").select2();
+
+    });
+
+</script>
 
 <script>
 
 $(function() {
-       $("form").submit(function(e) {
+    $("form").submit(function(e) {
     
-           
-             $('button[type=submit]').addClass("disabled-button");
-          });
-       });
+        
+            $('button[type=submit]').addClass("disabled-button");
+        });
+    });
 
 
 </script>
