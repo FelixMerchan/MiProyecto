@@ -73,14 +73,17 @@
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
                         <div class="col-md-4 col-xs-12">
-                        <div class="form-group">
-                            <label>Contraseña (*)</label>
-                            <input class="form-control" type="password" id="password" name="password" placeholder="Ingrese la contraseña" required="">
+                            <div class="form-group">
+                                <label>Contraseña (*)</label>
+                                <input class="form-control" type="password" id="password" name="password" placeholder="Ingrese la contraseña" required="">
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
 
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                    
                     </div>
                 </div>
 
