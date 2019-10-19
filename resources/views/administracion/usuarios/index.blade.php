@@ -192,7 +192,7 @@
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: true},
                     {data: 'name', name: 'name', orderable: false, searchable: true},
-                    {data: 'apellido', name: 'apellidos', orderable: false, searchable: true},
+                    {data: 'apellidos', name: 'apellidos', orderable: false, searchable: true},
                     {data: 'cedula', name: 'cedula', orderable: false, searchable: true},
                     {data: 'edad', name: 'edad', orderable: false, searchable: true},
                     {data: 'email', name: 'email', orderable: false, searchable: true},
