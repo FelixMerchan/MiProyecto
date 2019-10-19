@@ -9,6 +9,9 @@ use DataTables;
 use App\User;
 use App\Rol;
 
+//Request
+use App\Http\Requests\UserRequest;
+
 class UserController extends Controller
 {
     /**
@@ -19,8 +22,7 @@ class UserController extends Controller
     public function index()
     {
         $usuarios = User::where('estado',1)->orderBy('id')->get();
- 
-  
+        
         return View('administracion.usuarios.index',compact('usuarios'));
     }
 
@@ -42,10 +44,37 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //dd()
-        dd($request);
+        //dd($request)
+        $imagen = $request->file('path');
+        $imagen->move(public_path('imagenes'), $imagen->getClientOriginalName());
+        
+        $usuario= User::create([
+            'name' =>  $request->name,
+            'apellidos' =>  $request->apellidos,
+            'cedula' =>  $request->cedula,
+            'edad' =>  $request->edad,
+            'path' =>  $imagen->getClientOriginalName(),
+            'email' =>  $request->email,
+            'password' =>  Hash::make($request->password),
+        
+        ]);
+
+        $total_roles = $request->roles;
+        //si tiene roles
+            if (isset($total_roles )) {
+                foreach($total_roles as $roles){
+                    UserRol::create([
+                        'user_id'=>$usuario->id,
+                        'rol_id'=>$roles,
+                    ]);
+                }
+        
+
+            }
+
+        return Redirect::to('administracion/usuarios')->with('mensaje-registro', 'Se registró Correctamente');
     }
 
     /**

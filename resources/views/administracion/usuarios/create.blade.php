@@ -83,7 +83,7 @@
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>Roles</label>
-                            <select class="form-control select2" multiple="multiple" data-placeholder="Seleccione los roles" name ="roles[]" style="width: 100%;">
+                            <select class="form-control select2" multiple="multiple" data-placeholder="Seleccione los roles" name ="roles[]" style="width: 100%;" required="">
                                 @foreach($roles as $rol)
                                     <option value="{{$rol->id}}" >  {{ $rol->rol }} </option>
                                 @endforeach
