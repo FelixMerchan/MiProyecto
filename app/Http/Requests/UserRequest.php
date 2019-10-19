@@ -29,6 +29,7 @@ class UserRequest extends FormRequest
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|between:6,50',
             'cedula' => 'required|unique:users',
+            'path' => 'required|file|mimes:jpeg,bmp,png|max:10240',
             'edad' => 'required',
    
         ];
