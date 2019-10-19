@@ -70,14 +70,15 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
-                        <div class="col-md-4 col-xs-12">
-                            <div class="form-group">
-                                <label>Password (*)</label>
-                                <input class="form-control" type="password" id="password" name="password" placeholder="Ingrese el password" required="">
-                            </div>
+                        
+                        <div class="form-group">
+                            <label>Password (*)</label>
+                            <input class="form-control" type="password" id="password" name="password" placeholder="Ingrese el password" required="">
                         </div>
+                    
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
