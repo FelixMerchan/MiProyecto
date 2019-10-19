@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 
+//Modelos
 use App\User;
+use App\Rol;
+
 class UserController extends Controller
 {
     /**
@@ -28,7 +31,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Rol::where('estado',1)->orderBy('id')->get();
+ 
+        return view('administracion.usuarios.create', compact('roles'));
     }
 
     /**
