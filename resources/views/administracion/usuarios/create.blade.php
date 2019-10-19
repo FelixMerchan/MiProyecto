@@ -66,7 +66,7 @@
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>Foto (*)</label>
-                            <input class="form-control" type="file" id="path" name="path"  required="">
+                            <input class="form-control" type="file" id="path" name="path" accept="image/*" required="">
                         </div>
                     </div>
                 </div>
@@ -75,8 +75,8 @@
                     <div class="col-md-4 col-xs-12">
                         
                         <div class="form-group">
-                            <label>Password (*)</label>
-                            <input class="form-control" type="password" id="password" name="password" placeholder="Ingrese el password" required="">
+                            <label>Contraseña (*)</label>
+                            <input class="form-control" type="password" id="password" name="password" placeholder="Ingrese el contraseña" required="">
                         </div>
                     
                     </div>
