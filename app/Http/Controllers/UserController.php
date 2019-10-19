@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use DataTables;
+use Illuminate\Support\Facades\Hash;
 
 //Modelos
 use App\User;
 use App\Rol;
+use App\UserRol;
 
 //Request
 use App\Http\Requests\UserRequest;
@@ -22,7 +25,7 @@ class UserController extends Controller
     public function index()
     {
         $usuarios = User::where('estado',1)->orderBy('id')->get();
-        
+
         return View('administracion.usuarios.index',compact('usuarios'));
     }
 
