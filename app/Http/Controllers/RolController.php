@@ -122,6 +122,8 @@ class RolController extends Controller
         $rol->estado = 0;
         $rol->save();
 
+        DB::table('user_rol')->where('user_id', $rol->id)->delete();
+        
         $message = "Eliminado Correctamente";
         if ($request->ajax()) {
             return response()->json([
