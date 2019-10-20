@@ -54,7 +54,7 @@
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>Edad (*)</label>
-                            <input class="form-control" value="{{ old('edad') }}" type="number" id="edad" name="edad" placeholder="Ingrese la edad" required="">
+                            <input class="form-control" value="{{ old('edad') }}" onkeypress="return event.charCode >= 48" min="18" max="99" type="number" id="edad" name="edad" placeholder="Ingrese la edad" required="">
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
@@ -83,7 +83,7 @@
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>Roles</label>
-                            <select class="form-control select2" multiple="multiple" data-placeholder="Seleccione los roles" name ="roles[]" style="width: 100%;" required="">
+                            <select class="form-control select2" id="roles" multiple="multiple" data-placeholder="Seleccione los roles" name ="roles[]" style="width: 100%;" required="">
                                 @foreach($roles as $rol)
                                     <option value="{{$rol->id}}" >  {{ $rol->rol }} </option>
                                 @endforeach
@@ -103,13 +103,7 @@
 @endsection
 
 @section('script')
-<script>
-    $(function() {
-        $(".select2").select2();
 
-    });
-
-</script>
 
 <script>
 
@@ -125,12 +119,17 @@ $(function() {
 </script>
 
 <script type="text/javascript">    
-  var input1=  document.getElementById('cedula');
-      input1.addEventListener('input',function(){
+    var input1=  document.getElementById('cedula');
+    input1.addEventListener('input',function(){
         if (this.value.length > 10) 
-          this.value = this.value.slice(0,10); 
-      })
+            this.value = this.value.slice(0,10); 
+    })
 
+    var input2=  document.getElementById('edad');
+    input2.addEventListener('input',function(){
+        if (this.value.length > 2) 
+            this.value = this.value.slice(0,2); 
+    })
 </script>
 
 
@@ -178,7 +177,8 @@ function validarCedula() {
 
                         document.getElementById("cedula").value = "";
                         document.getElementById("cedula").style.borderColor = "red";
-                        
+                        //document.getElementById("cedula").focus();
+
                     }else{
 
                         document.getElementById("cedula").style.borderColor = "#b5b5b5";
@@ -251,7 +251,43 @@ function validarEmail() {
 
     }
 }
-   
+
+
+$(document).ready(function() {
+          $('#roles').select2({
+            ajax: {
+                url: "<?php echo route('cargar_roles') ?>",
+                data: function (params) {
+                    return {
+                        search: params.term,
+                        page: params.page || 1
+                    };
+                },
+                dataType: 'json',
+                processResults: function (data) {
+                    //console.log(JSON.stringify(data));
+                    data.page = data.page || 1;
+                    return {
+                        results: data.items.map(function (item) {
+                            return {
+                                id: item.id,
+                                text: item.rol
+                            };
+                        }),
+                        pagination: {
+                            more: data.pagination
+                        }
+                    }
+                },
+                cache: true,
+                delay: 250
+            },
+            placeholder: 'Seleccion al menos 1 rol',
+//                minimumInputLength: 2,
+            multiple: true
+        });
+
+});
 </script>
 
 
