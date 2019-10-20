@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use DataTables;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 //Modelos
 use App\User;
@@ -149,4 +150,44 @@ class UserController extends Controller
                 ->make(true);
       
     }
+
+    public function buscar_cedula_usuario(Request $request){
+        if($request->ajax()){
+
+           $cedula=$request->cedula;
+           $usuarios = User::where('cedula', $cedula)->get();
+          
+            if(count($usuarios) > 0) {
+
+                return response()->json("existe");
+
+            }else{
+                
+                return response()->json("no_existe");
+
+            }
+        } 
+
+    }
+
+    public function buscar_email_usuario(Request $request){
+   
+           if($request->ajax()){
+             
+               $email=$request->email;
+
+               $usuarios= User::where('email', $email)->get();
+               if(count($usuarios) > 0) {
+                return response()->json("existe");
+    
+               }else{
+              
+                return response()->json("no_existe");
+    
+               }
+    
+           }
+   
+    }
+
 }

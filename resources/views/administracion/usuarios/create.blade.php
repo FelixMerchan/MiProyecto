@@ -33,19 +33,19 @@
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>Nombres (*)</label>
-                            <input class="form-control" type="text" id="name" name="name" placeholder="Ingrese el nombre" required="">
+                            <input class="form-control" value="{{ old('name') }}" type="text" id="name" name="name" placeholder="Ingrese el nombre" required="">
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>Apellidos (*)</label>
-                            <input class="form-control" type="text" id="apellidos" name="apellidos" placeholder="Ingrese el apellido" required="">
+                            <input class="form-control" value="{{ old('apellidos') }}" type="text" id="apellidos" name="apellidos" placeholder="Ingrese el apellido" required="">
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>Cedula (*)</label>
-                            <input class="form-control" type="text" id="cedula" name="cedula" placeholder="Ingrese la cedula" required="">
+                            <input class="form-control" onblur="validarCedula()" value="{{ old('cedula') }}" type="text" id="cedula" name="cedula" placeholder="Ingrese la cedula" required="" onkeypress="return soloNumeros(event)">
                         </div>
                     </div>
                 </div>
@@ -54,13 +54,13 @@
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>Edad (*)</label>
-                            <input class="form-control" type="number" id="edad" name="edad" placeholder="Ingrese la edad" required="">
+                            <input class="form-control" value="{{ old('edad') }}" type="number" id="edad" name="edad" placeholder="Ingrese la edad" required="">
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>Email (*)</label>
-                            <input class="form-control" type="email" id="email" name="email" placeholder="Ingrese el email" required="">
+                            <input class="form-control" onblur="validarEmail()" value="{{ old('email') }}" type="email" id="email" name="email" placeholder="Ingrese el email" required="">
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
@@ -122,6 +122,136 @@ $(function() {
     });
 
 
+</script>
+
+<script type="text/javascript">    
+  var input1=  document.getElementById('cedula');
+      input1.addEventListener('input',function(){
+        if (this.value.length > 10) 
+          this.value = this.value.slice(0,10); 
+      })
+
+</script>
+
+
+<script type="text/javascript">    
+
+function validarCedula() {
+    var x = document.getElementById("cedula");
+    var cedula = x.value;
+   
+    $.ajaxSetup({
+  
+        headers: {
+  
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+  
+    });
+  
+    if(cedula.length > 0){
+  
+            //**********************************/
+            $.ajax({
+
+                    type:'POST',
+
+                    url: "<?php echo route('buscar_cedula_usuario') ?>",
+
+
+                    data:{cedula:cedula},
+                    beforeSend: function() {
+                    $(".loader").show();
+                    },
+
+                    success:function(data){
+                    
+                    $(".loader").hide();
+                        
+                    if(data == "existe"){
+                        swal({
+                        title: "Lo sentimos!",
+                        text: "La cédula ingresada ya se encuentra registrada",
+                        type: "warning",
+                        button: "Ok",
+                        });
+
+                        document.getElementById("cedula").value = "";
+                        document.getElementById("cedula").style.borderColor = "red";
+                        
+                    }else{
+
+                        document.getElementById("cedula").style.borderColor = "#b5b5b5";
+
+                    }
+
+                }
+                        
+            });
+            //**********************************/
+  
+      }
+     
+  }
+
+
+function validarEmail() {
+  var x = document.getElementById("email");
+  var email = x.value;
+ 
+  $.ajaxSetup({
+
+    headers: {
+
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+
+    });
+
+    if(email.length > 0){
+
+
+    $.ajax({
+
+      type:'POST',
+
+      url: "<?php echo route('buscar_email_usuario') ?>",
+
+
+      data:{email:email},
+        beforeSend: function() {
+        $(".loader").show();
+      },
+
+      success:function(data){
+        
+        $(".loader").hide();
+        
+      
+
+        if(data == "existe"){
+          swal({
+        title: "¡Oh no!",
+        text: "El email que ingresaste ya se encuentra registrado en el sistema",
+        type: "warning",
+        button: "Ok",
+        });
+        document.getElementById("email").value = "";
+        document.getElementById("email").style.borderColor = "red";
+          
+
+        }else{
+          document.getElementById("email").style.borderColor = "#cacaca";
+        }
+
+
+      }
+
+      });
+
+    }
+}
+   
 </script>
 
 
